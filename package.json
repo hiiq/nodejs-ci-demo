@@ -1,15 +1,20 @@
 {
-  "name": "project-abc",
+  "name": "nodejs-ci-demo",
   "version": "1.0.0",
-  "description": "Continuous Integration: Debugging Live CircleCI Builds with SSH Access",
+  "description": "Continuous Integration: Debugging Live Travis CI and CircleCI Builds with SSH Access",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha"
+    "test": "mocha",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha -- --recursive -R min && cat ./coverage/lcov.info | codecov ",
+    "test-cover": "istanbul cover --report html node_modules/mocha/bin/_mocha -- --recursive",
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha",
+    "code-coverage": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat coverage/lcov.info | coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johnkariuki/project-abc.git"
+    "url": "git+https://github.com/hiiq/nodejs-ci-demo.git"
   },
   "keywords": [
     "circleci",
@@ -17,17 +22,23 @@
     "debugging",
     "scotchio"
   ],
-  "author": "John Kariuki <john.kariuki@andela.com>",
+  "author": "Ryan C. Martin <ryan.martin@intersystems.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/johnkariuki/project-abc/issues"
+    "url": "https://github.com/hiiq/nodejs-ci-demo/issues"
   },
-  "homepage": "https://github.com/johnkariuki/project-abc#readme",
+  "homepage": "https://github.com/hiiq/nodejs-ci-demo#readme",
   "dependencies": {
     "express": "^4.14.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "codecov.io": "^0.1.6",
+    "coveralls": "^2.11.14",
+    "istanbul": "^0.4.5",
     "mocha": "^2.5.3",
+    "mocha-lcov-reporter": "^1.2.0",
+    "request": "^2.75.0",
     "supertest": "^1.2.0"
   }
 }

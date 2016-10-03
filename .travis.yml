@@ -1,0 +1,49 @@
+language: node_js
+node_js:
+- '5.12'
+
+before_install:
+- npm install -g bower
+- npm install -g gulp
+- npm install -g karma
+- npm install -g chai
+- npm install -g mocha
+- npm install -g mocha-cli
+- npm install -g mocha-lcov-reporter
+- npm install -g istanbul
+- npm install -g coveralls
+- npm install -g codecov.io
+
+install: 
+- npm install
+
+before_script:
+#- npm install chai
+#- npm install codecov.io
+#- npm install coveralls
+#- npm install istanbul
+#- npm install mocha
+#- npm install mocha-lcov-reporter
+#- npm install phantomjs
+#- npm install request
+#- npm install supertest
+
+script:
+- npm test
+
+after_success:
+- npm run coveralls
+
+before_deploy:
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: HpPaPny647BPpJjG3dkbXBx3L59kDRRwSPM3RJhaUnAHNUr/shkQqfwAULPmyw7dIxMaItFBB2+e+toFtcrjqc8X6I4lyRVLfbitc+P+dOrEWl+XAejtpaCLW4JXee5P0ZgacOnziBQTTofh+EnCWBp456hC+aOjnXE6rXSuZrQwldHLcgr4ni6babqT+irO98O2ZT2bbbZukaI2SwtI+AGJ+Cu4Tzzwj4/3HfSeB5sdinfMU/5ik+NEHMgIGB/lKqKHGGnI0TxgCsMLOvagMknwkC9J3Y65oJ5HIhr4sz/tQmTP65tc6gtKwbJnVy9JxDsqxPaKRCUfTGCKztX5RY+FJ/bHAJ05T5g9Lmule/s4E0Nv6BnagMpspP8sspuKsovajNub4l5JPrSRWLxo4ecrVB3Ej2Fq9iyItRYJhQlVgZuiSmJYjtENsaVxzVlSiaNWNrJ94kB3S/wBgWZMKZchjscd1u8kF3YzWSK1YvDVJ01qXLIinYk9BN4RVJnguGe/nwQFgiMwznA3NQeV70MWmHrQZ6NPqL3ZWL2jWXI+P6YuGYGA5rlEIOKk+gv1dZID7NkSsptDDxIOlXOqHiBu+LCBD0Fonjc3hnVDj8BTbYRl+LZH7MzpVDjoks7Wrs0YHUJpgxhXCu94V+7KPkUeheCYZNk1LUznHtyGsLo=
+  app: nodejs-travisci-demo
+  on:
+    repo: hiiq/nodejs-ci-demo
+
+after_deploy:
+
+after_script:

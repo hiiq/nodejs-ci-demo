@@ -7,7 +7,6 @@ dependencies:
 test:
     override:
     - npm test
-    - mocha
 deployment:
   staging:
     branch: master
