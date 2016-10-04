@@ -33,7 +33,7 @@ test:
     override:
       - npm test
     post:
-      - code-coverage
+      - npm run code-coverage
 
 ########################
 # Customize deployment

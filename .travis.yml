@@ -1,77 +1,44 @@
-########################
-# Customize the test machine
-########################
 language: node_js
 node_js:
-  - '5.12'
+- '5.12'
 env:
-  - COVERALLS_REPO_TOKEN=5XNPKwGCNskee0v2w8vHgXrhNUzxq7yk2
-  - COVERALLS_GIT_COMMIT=HEAD
-  - COVERALLS_GIT_BRANCH=master
-
-########################
-# Customize dependencies
-########################
+- COVERALLS_REPO_TOKEN=5XNPKwGCNskee0v2w8vHgXrhNUzxq7yk2
 before_install:
-  - npm install -g npm@latest
-  - npm install -g bower
-  - npm install -g gulp
-  - npm install -g karma
-  - npm install -g chai
-  - npm install -g mocha
-  - npm install -g mocha-cli
-  - npm install -g mocha-lcov-reporter
-  - npm install -g nyc
-  - npm install -g istanbul
-  - npm install -g coveralls
-  - npm install -g codecov.io
-
-install: 
-  - nvm install 5 && npm install
-
-########################
-# Customize test commands
-########################
-before_script:
-  - git config --global user.name hiiq
-  - git config user.email "ryan.martin@intersystems.com"
-
+- npm install -g npm@latest
+- npm install -g bower
+- npm install -g gulp
+- npm install -g karma
+- npm install -g chai
+- npm install -g mocha
+- npm install -g mocha-cli
+- npm install -g mocha-lcov-reporter
+- npm install -g nyc
+- npm install -g istanbul
+- npm install -g coveralls
+- npm install -g codecov.io
+install:
+- nvm install 5 && npm install
 script:
-  - "npm test"
-  - "npm run-script test-travis"
-
+- npm test
+- npm run-script test-travis
 after_success:
-  - "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
-  #- npm run coveralls
-  #- codecov -e TRAVIS_NODE_VERSION -f coverage/coverage.json
-
-after_script:
-
-########################
-# Customize deployment
-########################
-before_deploy:
-
+- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+after_script: 
+before_deploy: 
 deploy:
   provider: heroku
   api_key:
-    secure: HpPaPny647BPpJjG3dkbXBx3L59kDRRwSPM3RJhaUnAHNUr/shkQqfwAULPmyw7dIxMaItFBB2+e+toFtcrjqc8X6I4lyRVLfbitc+P+dOrEWl+XAejtpaCLW4JXee5P0ZgacOnziBQTTofh+EnCWBp456hC+aOjnXE6rXSuZrQwldHLcgr4ni6babqT+irO98O2ZT2bbbZukaI2SwtI+AGJ+Cu4Tzzwj4/3HfSeB5sdinfMU/5ik+NEHMgIGB/lKqKHGGnI0TxgCsMLOvagMknwkC9J3Y65oJ5HIhr4sz/tQmTP65tc6gtKwbJnVy9JxDsqxPaKRCUfTGCKztX5RY+FJ/bHAJ05T5g9Lmule/s4E0Nv6BnagMpspP8sspuKsovajNub4l5JPrSRWLxo4ecrVB3Ej2Fq9iyItRYJhQlVgZuiSmJYjtENsaVxzVlSiaNWNrJ94kB3S/wBgWZMKZchjscd1u8kF3YzWSK1YvDVJ01qXLIinYk9BN4RVJnguGe/nwQFgiMwznA3NQeV70MWmHrQZ6NPqL3ZWL2jWXI+P6YuGYGA5rlEIOKk+gv1dZID7NkSsptDDxIOlXOqHiBu+LCBD0Fonjc3hnVDj8BTbYRl+LZH7MzpVDjoks7Wrs0YHUJpgxhXCu94V+7KPkUeheCYZNk1LUznHtyGsLo=
+    secure: KRQqMhcW9rkONT762VFgpcM3PrvBUQKlRoJYO0dv7UrjM1tWY73p+EFQty73NZufnnXNrmhYGzf/9W2XHdPSlcH+shMtgnzYY9WMu/rRZI/Y/VvJayLEyERMGkRqAlzfR9QmJx9UDeK7gFqzC+wM4S3Kv7sFleeNr0Ygh4uFufdO6sYawG/2fngm/drEd4Ysn3CjBqCvFTH/ai5F1AtFjp6w3AbSwDG6lLB9bZvHc8EU1ELjgoERUkSr+U0ecaNqzS9FrpWBECEfXUBiyXeW3OTTcKFLeaK7QlEOl2dixdK+gG5lDATjd34RW0aCYB2txV6Yrc+F7+n/3Kfj5IbIQPxeTG8Fwchslnnyu3mImLI0ZsS2cEO+DjzFJ9FQcAHJmHai8zzNAzKmH6E7P+hyAgqr0ah1R4ZlySQVNe2VItZ/fKbjmiRvixYbWUBAF5SG2WD03tXHgMDzwgJQ4yFpLIAVt4fcAosTlifzGiEIhKgRP4mQqmCqTIqyaqkH8++6ZBavTT7+lvZ6CsyUm/vvDFwwVtXAJhWsINHw53Kf++UAsmm5IoZrqTRy0f0DePt6jBA7dEOH7BS+jBk3uIgXLxVFul32E7s7U3xCO0grxy8g2AkZ+XfXipf0gyevHz+8Ixw/e3RlCNqQyN3/ZkIisfIG3mn2GunC+IVU29RkGXk=
   app: nodejs-travisci-demo
   on:
     repo: hiiq/nodejs-ci-demo
-
-after_deploy:
-
-########################
-# Custom notifications
-########################
+after_deploy: 
 notifications:
-  email: 
-    - ryan.martin@intersystems.com
-  slack: 
+  email:
+  - ryan.martin@intersystems.com
+  slack:
     rooms:
-      - intersystems-ci:6y5k7bFQ8Wfb5icvkLqWit6A
+    - intersystems-ci:6y5k7bFQ8Wfb5icvkLqWit6A
   campfire: intersystems:de723775bb9d9b7452ee8434353a36b22c507ba5@624624
   flowdock: aa2923082bea7966db2d2b9235530206
   hipchat: 7haGqtTSDPm9c7v0I5tht2JtolrmQZ8vGH8eMRRm@3173944
-
