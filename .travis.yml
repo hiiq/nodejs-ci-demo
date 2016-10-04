@@ -6,6 +6,8 @@ node_js:
   - '5.12'
 env:
   - COVERALLS_REPO_TOKEN=5XNPKwGCNskee0v2w8vHgXrhNUzxq7yk2
+  - COVERALLS_GIT_COMMIT=HEAD
+  - COVERALLS_GIT_BRANCH=master
 
 ########################
 # Customize dependencies
@@ -25,21 +27,23 @@ before_install:
   - npm install -g codecov.io
 
 install: 
-  - npm install
+  - nvm install 5 && npm install
 
 ########################
 # Customize test commands
 ########################
 before_script:
-  - git config --global user.name hiiq
-  - git config user.email "ryan.martin@intersystems.com"
+  #- git config --global user.name hiiq
+  #- git config user.email "ryan.martin@intersystems.com"
 
 script:
-  - npm test
+  #- "npm test"
+  - "npm run-script test-travis"
 
 after_success:
   #- "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
-  - npm run coveralls
+  - "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  #- npm run coveralls
   #- codecov -e TRAVIS_NODE_VERSION -f coverage/coverage.json
 
 after_script:

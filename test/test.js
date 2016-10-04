@@ -1,6 +1,5 @@
 'use strict';
 
-
 var request = require('supertest'),
   app = require('../index').app;
 

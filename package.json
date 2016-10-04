@@ -1,7 +1,7 @@
 {
   "name": "nodejs-ci-demo",
   "version": "1.0.0",
-  "description": "Continuous Integration: Debugging Live Travis CI and CircleCI Builds with SSH Access",
+  "description": "Continuous Integration: Executing build, test, cover and deployment tasks with Coveralls, Travis CI and CircleCI.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -14,7 +14,7 @@
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
 
     "code-coverage": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat coverage/lcov.info | coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha -- --recursive -R min && cat ./coverage/lcov.info | codecov "
+    "test-travis": "node node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./test/*"
   },
   "repository": {
     "type": "git",
@@ -22,9 +22,9 @@
   },
   "keywords": [
     "circleci",
-    "ssh-access",
-    "debugging",
-    "scotchio"
+    "travisci",
+    "coveralls",
+    "istanbul"
   ],
   "author": "Ryan C. Martin <ryan.martin@intersystems.com>",
   "license": "MIT",
