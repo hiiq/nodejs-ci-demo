@@ -4,6 +4,8 @@
 language: node_js
 node_js:
   - '5.12'
+env:
+  - COVERALLS_REPO_TOKEN=5XNPKwGCNskee0v2w8vHgXrhNUzxq7yk2
 
 ########################
 # Customize dependencies
@@ -36,8 +38,9 @@ script:
   - npm test
 
 after_success:
+  #- "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   - npm run coveralls
-  - codecov -e TRAVIS_NODE_VERSION -f coverage/coverage.json
+  #- codecov -e TRAVIS_NODE_VERSION -f coverage/coverage.json
 
 after_script:
 

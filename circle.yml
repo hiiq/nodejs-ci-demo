@@ -33,8 +33,7 @@ test:
     override:
       - npm test
     post:
-      - codecov -f coverage/coverage.json
-      - bash <(curl -s https://codecov.io/bash)
+      - code-coverage
 
 ########################
 # Customize deployment

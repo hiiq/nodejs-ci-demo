@@ -5,8 +5,15 @@ var express = require('express'),
   converter = require("./converter");;
 
 app.get('/', function (req, res) {
-  res.status(200)
-    .send('Success is going from failure to failure without losing enthusiasm.');
+  res.status(200).send('Success is going from failure to failure without losing enthusiasm.');
+});
+
+app.get('/test', function (req, res) {
+  res.status(200).send('You reached the test route.');
+});
+
+app.get("/foo", function(req, res) {
+    res.send({ message: "foo" });
 });
 
 app.get("/rgbToHex", function(req, res) {
