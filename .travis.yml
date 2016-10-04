@@ -1,39 +1,49 @@
+########################
+# Customize the test machine
+########################
 language: node_js
 node_js:
-- '5.12'
+  - '5.12'
 
+########################
+# Customize dependencies
+########################
 before_install:
-- npm install -g bower
-- npm install -g gulp
-- npm install -g karma
-- npm install -g chai
-- npm install -g mocha
-- npm install -g mocha-cli
-- npm install -g mocha-lcov-reporter
-- npm install -g istanbul
-- npm install -g coveralls
-- npm install -g codecov.io
+  - npm install -g npm@latest
+  - npm install -g bower
+  - npm install -g gulp
+  - npm install -g karma
+  - npm install -g chai
+  - npm install -g mocha
+  - npm install -g mocha-cli
+  - npm install -g mocha-lcov-reporter
+  - npm install -g nyc
+  - npm install -g istanbul
+  - npm install -g coveralls
+  - npm install -g codecov.io
 
 install: 
-- npm install
+  - npm install
 
+########################
+# Customize test commands
+########################
 before_script:
-#- npm install chai
-#- npm install codecov.io
-#- npm install coveralls
-#- npm install istanbul
-#- npm install mocha
-#- npm install mocha-lcov-reporter
-#- npm install phantomjs
-#- npm install request
-#- npm install supertest
+  - git config --global user.name hiiq
+  - git config user.email "ryan.martin@intersystems.com"
 
 script:
-- npm test
+  - npm test
 
 after_success:
-- npm run coveralls
+  - npm run coveralls
+  - codecov -e TRAVIS_NODE_VERSION -f coverage/coverage.json
 
+after_script:
+
+########################
+# Customize deployment
+########################
 before_deploy:
 
 deploy:
@@ -46,4 +56,17 @@ deploy:
 
 after_deploy:
 
-after_script:
+########################
+# Custom notifications
+########################
+notifications:
+  email:
+    - ryan.martin@intersystems.com
+  slack: 
+    rooms:
+      intersystems-ci:6y5k7bFQ8Wfb5icvkLqWit6A
+    on_success: always
+  campfire: [intersystems]:[de723775bb9d9b7452ee8434353a36b22c507ba5]@[624624]
+  flowdock: [aa2923082bea7966db2d2b9235530206]
+  hipchat: [7haGqtTSDPm9c7v0I5tht2JtolrmQZ8vGH8eMRRm]@[3173944]
+

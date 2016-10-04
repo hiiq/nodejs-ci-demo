@@ -6,10 +6,14 @@
   "scripts": {
     "start": "node index.js",
     "test": "mocha",
-    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha -- --recursive -R min && cat ./coverage/lcov.info | codecov ",
+    "test-codecov": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec",
     "test-cover": "istanbul cover --report html node_modules/mocha/bin/_mocha -- --recursive",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha",
     "code-coverage": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat coverage/lcov.info | coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "test-codecov-travis": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec codecov",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha -- --recursive -R min && cat ./coverage/lcov.info | codecov ",
+    "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
+    "coveralls-nyc": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
@@ -38,6 +42,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^2.5.3",
     "mocha-lcov-reporter": "^1.2.0",
+    "nyc": "^8.3.0",
     "request": "^2.75.0",
     "supertest": "^1.2.0"
   }

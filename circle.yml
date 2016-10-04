@@ -1,14 +1,54 @@
+########################
+# Customize the test machine
+########################
 machine:
   node:
     version: 5.0.0
+
+########################
+# Customize dependencies
+########################
 dependencies:
+  pre:
+    - npm install -g npm@latest
+    - npm install -g bower
+    - npm install -g gulp
+    - npm install -g karma
+    - npm install -g chai
+    - npm install -g mocha
+    - npm install -g mocha-cli
+    - npm install -g mocha-lcov-reporter
+    - npm install -g nyc
+    - npm install -g istanbul
+    - npm install -g coveralls
+    - npm install -g codecov.io
   override:
-    - npm install
+    - nvm install 5 && npm install
+    # - npm install
+
+########################
+# Customize test commands
+########################
 test:
     override:
-    - npm test
+      - npm test
+    post:
+      - codecov -f coverage/coverage.json
+      - bash <(curl -s https://codecov.io/bash)
+
+########################
+# Customize deployment
+########################
 deployment:
   staging:
     branch: master
     heroku:
       appname: nodejs-ci-demo
+
+########################
+# Custom notifications
+########################
+notify:
+  webhooks:
+    - url: https://circleci.com/hooks/circle
+
