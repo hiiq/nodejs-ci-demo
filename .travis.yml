@@ -29,7 +29,7 @@ deploy:
   provider: heroku
   api_key:
     secure: KRQqMhcW9rkONT762VFgpcM3PrvBUQKlRoJYO0dv7UrjM1tWY73p+EFQty73NZufnnXNrmhYGzf/9W2XHdPSlcH+shMtgnzYY9WMu/rRZI/Y/VvJayLEyERMGkRqAlzfR9QmJx9UDeK7gFqzC+wM4S3Kv7sFleeNr0Ygh4uFufdO6sYawG/2fngm/drEd4Ysn3CjBqCvFTH/ai5F1AtFjp6w3AbSwDG6lLB9bZvHc8EU1ELjgoERUkSr+U0ecaNqzS9FrpWBECEfXUBiyXeW3OTTcKFLeaK7QlEOl2dixdK+gG5lDATjd34RW0aCYB2txV6Yrc+F7+n/3Kfj5IbIQPxeTG8Fwchslnnyu3mImLI0ZsS2cEO+DjzFJ9FQcAHJmHai8zzNAzKmH6E7P+hyAgqr0ah1R4ZlySQVNe2VItZ/fKbjmiRvixYbWUBAF5SG2WD03tXHgMDzwgJQ4yFpLIAVt4fcAosTlifzGiEIhKgRP4mQqmCqTIqyaqkH8++6ZBavTT7+lvZ6CsyUm/vvDFwwVtXAJhWsINHw53Kf++UAsmm5IoZrqTRy0f0DePt6jBA7dEOH7BS+jBk3uIgXLxVFul32E7s7U3xCO0grxy8g2AkZ+XfXipf0gyevHz+8Ixw/e3RlCNqQyN3/ZkIisfIG3mn2GunC+IVU29RkGXk=
-  app: nodejs-travisci-demo
+  app: nodejs-ci-demo
   on:
     repo: hiiq/nodejs-ci-demo
 after_deploy: 
