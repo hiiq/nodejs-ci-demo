@@ -5,7 +5,7 @@ var express = require('express'),
   converter = require("./converter");;
 
 app.get('/', function (req, res) {
-  res.status(200).send('Success is going from failure to failure without losing enthusiasm.');
+  res.status(200).send('You made it to hiiq/nodejs-ci-demo home page...');
 });
 
 app.get('/test', function (req, res) {

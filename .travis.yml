@@ -33,15 +33,14 @@ install:
 # Customize test commands
 ########################
 before_script:
-  #- git config --global user.name hiiq
-  #- git config user.email "ryan.martin@intersystems.com"
+  - git config --global user.name hiiq
+  - git config user.email "ryan.martin@intersystems.com"
 
 script:
-  #- "npm test"
+  - "npm test"
   - "npm run-script test-travis"
 
 after_success:
-  #- "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   - "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   #- npm run coveralls
   #- codecov -e TRAVIS_NODE_VERSION -f coverage/coverage.json
@@ -67,13 +66,12 @@ after_deploy:
 # Custom notifications
 ########################
 notifications:
-  email:
+  email: 
     - ryan.martin@intersystems.com
   slack: 
     rooms:
-      intersystems-ci:6y5k7bFQ8Wfb5icvkLqWit6A
-    on_success: always
-  campfire: [intersystems]:[de723775bb9d9b7452ee8434353a36b22c507ba5]@[624624]
-  flowdock: [aa2923082bea7966db2d2b9235530206]
-  hipchat: [7haGqtTSDPm9c7v0I5tht2JtolrmQZ8vGH8eMRRm]@[3173944]
+      - intersystems-ci:6y5k7bFQ8Wfb5icvkLqWit6A
+  campfire: intersystems:de723775bb9d9b7452ee8434353a36b22c507ba5@624624
+  flowdock: aa2923082bea7966db2d2b9235530206
+  hipchat: 7haGqtTSDPm9c7v0I5tht2JtolrmQZ8vGH8eMRRm@3173944
 
