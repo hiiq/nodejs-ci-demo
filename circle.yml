@@ -3,30 +3,27 @@
 ########################
 machine:
   node:
-    version: 5.0.0
+    version: 5.12
 
 ########################
 # Customize dependencies
 ########################
 dependencies:
   cache_directories:
-    - "node_modules"
+    - ~/.npm
   pre:
+    - rm -rf ./node_modules
+    - rm -rf ./coverage
     - npm install -g npm@latest
-    - npm install -g bower
-    - npm install -g gulp
-    - npm install -g karma
-    - npm install -g chai
-    - npm install -g mocha
-    - npm install -g mocha-cli
-    - npm install -g mocha-lcov-reporter
-    - npm install -g nyc
-    - npm install -g istanbul
+    #- npm install -g chai
+    #- npm install -g mocha
+    #- npm install -g mocha-cli
+    #- npm install -g mocha-lcov-reporter
+    #- npm install -g istanbul
     - npm install -g coveralls
-    - npm install -g codecov.io
   override:
-    - nvm install 5 && npm install
-    # - npm install
+    #- nvm install 5 && npm install
+    - npm install
 
 ########################
 # Customize test commands
@@ -35,7 +32,7 @@ test:
     override:
       - npm test
     post:
-      - npm run code-coverage
+      - npm run coveralls
 
 ########################
 # Customize deployment

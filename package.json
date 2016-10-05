@@ -7,13 +7,10 @@
     "start": "node index.js",
     "test": "mocha",
 
-    "test-codecov": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec",
-    "test-cover": "istanbul cover --report html node_modules/mocha/bin/_mocha -- --recursive",
-
-    "cover": "istanbul cover node_modules/mocha/bin/_mocha",
+    "cover": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
-
-    "code-coverage": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+  
+    "code-coverage": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "test-travis": "node node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./test/*"
   },
   "repository": {

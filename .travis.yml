@@ -5,24 +5,21 @@ env:
 - COVERALLS_REPO_TOKEN=5XNPKwGCNskee0v2w8vHgXrhNUzxq7yk2
 before_install:
 - npm install -g npm@latest
-- npm install -g bower
-- npm install -g gulp
-- npm install -g karma
-- npm install -g chai
-- npm install -g mocha
-- npm install -g mocha-cli
-- npm install -g mocha-lcov-reporter
-- npm install -g nyc
-- npm install -g istanbul
+#- npm install -g chai
+#- npm install -g mocha
+#- npm install -g mocha-cli
+#- npm install -g mocha-lcov-reporter
+#- npm install -g istanbul
 - npm install -g coveralls
-- npm install -g codecov.io
 install:
-- nvm install 5 && npm install
+#- nvm install 5 && npm install
+- npm install
 script:
 - npm test
-- npm run-script test-travis
+- npm run coveralls
+#- npm run-script test-travis
 after_success:
-- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+#- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
   provider: heroku
   api_key:
@@ -36,6 +33,6 @@ notifications:
   slack:
     rooms:
     - intersystems-ci:6y5k7bFQ8Wfb5icvkLqWit6A
-  campfire: intersystems:de723775bb9d9b7452ee8434353a36b22c507ba5@624624
+  campfire: intersystems-ci:de723775bb9d9b7452ee8434353a36b22c507ba5@624624
   flowdock: aa2923082bea7966db2d2b9235530206
   hipchat: 7haGqtTSDPm9c7v0I5tht2JtolrmQZ8vGH8eMRRm@3173944
