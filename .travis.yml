@@ -23,8 +23,6 @@ script:
 - npm run-script test-travis
 after_success:
 - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-after_script: 
-before_deploy: 
 deploy:
   provider: heroku
   api_key:
@@ -32,7 +30,6 @@ deploy:
   app: nodejs-ci-demo
   on:
     repo: hiiq/nodejs-ci-demo
-after_deploy: 
 notifications:
   email:
   - ryan.martin@intersystems.com

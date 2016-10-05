@@ -9,6 +9,8 @@ machine:
 # Customize dependencies
 ########################
 dependencies:
+  cache_directories:
+    - "node_modules"
   pre:
     - npm install -g npm@latest
     - npm install -g bower
@@ -43,11 +45,3 @@ deployment:
     branch: master
     heroku:
       appname: nodejs-ci-demo
-
-########################
-# Custom notifications
-########################
-notify:
-  webhooks:
-    - url: https://circleci.com/hooks/circle
-
