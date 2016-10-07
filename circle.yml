@@ -15,14 +15,11 @@ dependencies:
     - rm -rf ./node_modules
     - rm -rf ./coverage
     - npm install -g npm@latest
-    #- npm install -g chai
-    #- npm install -g mocha
-    #- npm install -g mocha-cli
-    #- npm install -g mocha-lcov-reporter
-    #- npm install -g istanbul
+    - npm install -g codeclimate-test-reporter
+    - npm install -g mocha-cli
+    - npm install -g mocha-lcov-reporter
     - npm install -g coveralls
   override:
-    #- nvm install 5 && npm install
     - npm install
 
 ########################
@@ -33,6 +30,7 @@ test:
       - npm test
     post:
       - npm run coveralls
+      - npm run code-climate
 
 ########################
 # Customize deployment

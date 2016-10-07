@@ -1,0 +1,27 @@
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+        - javascript
+  eslint:
+    enabled: true
+  scss-lint:
+    enabled: true
+  fixme:
+    enabled: true
+    config:
+      strings:
+      - TODO
+      - FIXME
+      - BUG
+      - HACK
+ratings:
+  paths:
+    - "src/**"
+    - "test/unit/**"
+    - "**.js"
+exclude_paths:
+  - coverage/**/*
+  - node_modules/**/*
+  - test/**/*

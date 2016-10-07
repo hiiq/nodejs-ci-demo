@@ -1,24 +1,30 @@
 language: node_js
+addons:
+  code_climate:
+    repo_token: 348dbd6ca5490ec123ee75cb22e4e205986f19d208be3453e9d0faa578203d54
 node_js:
 - '5.12'
 env:
 - COVERALLS_REPO_TOKEN=5XNPKwGCNskee0v2w8vHgXrhNUzxq7yk2
+cache:
+  directories:
+    - node_modules
 before_install:
+- rm -rf ./node_modules
+- rm -rf ./coverage
 - npm install -g npm@latest
-#- npm install -g chai
-#- npm install -g mocha
-#- npm install -g mocha-cli
-#- npm install -g mocha-lcov-reporter
-#- npm install -g istanbul
+- npm install -g codeclimate-test-reporter
+- npm install -g mocha-cli
+- npm install -g mocha-lcov-reporter
 - npm install -g coveralls
 install:
-#- nvm install 5 && npm install
 - npm install
 script:
 - npm test
-- npm run coveralls
 #- npm run-script test-travis
 after_success:
+- npm run coveralls
+- npm run code-climate
 #- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
   provider: heroku
@@ -33,6 +39,6 @@ notifications:
   slack:
     rooms:
     - intersystems-ci:6y5k7bFQ8Wfb5icvkLqWit6A
-  campfire: intersystems-ci:de723775bb9d9b7452ee8434353a36b22c507ba5@624624
+  campfire: intersystems-isc:de723775bb9d9b7452ee8434353a36b22c507ba5@624624
   flowdock: aa2923082bea7966db2d2b9235530206
   hipchat: 7haGqtTSDPm9c7v0I5tht2JtolrmQZ8vGH8eMRRm@3173944

@@ -1,3 +1,5 @@
+// FIXME: Move this function into its own declaritive 
+// function and pass it to the module by reference
 module.exports = function(n) {
   if (typeof n !== 'number') {
     return null;
