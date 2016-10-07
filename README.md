@@ -1,5 +1,8 @@
 [![Build Status](https://travis-ci.org/hiiq/nodejs-ci-demo.svg?branch=master)](https://travis-ci.org/hiiq/nodejs-ci-demo)
 [![CircleCI](https://circleci.com/gh/hiiq/nodejs-ci-demo.svg?style=svg)](https://circleci.com/gh/hiiq/nodejs-ci-demo)
+[![wercker status](https://app.wercker.com/status/e76b0a04d716ca490e349e6aab26c233/s/master "wercker status")](https://app.wercker.com/project/byKey/e76b0a04d716ca490e349e6aab26c233)
+
+
 [![Coverage Status](https://coveralls.io/repos/hiiq/nodejs-ci-demo/badge.svg)](https://coveralls.io/r/hiiq/nodejs-ci-demo)
 [![Code Climate](https://codeclimate.com/repos/57f590c40b21c42f20000629/badges/7c0713aa774fb34bb06d/gpa.svg)](https://codeclimate.com/repos/57f590c40b21c42f20000629/feed)
 [![Test Coverage](https://codeclimate.com/repos/57f590c40b21c42f20000629/badges/7c0713aa774fb34bb06d/coverage.svg)](https://codeclimate.com/repos/57f590c40b21c42f20000629/coverage)

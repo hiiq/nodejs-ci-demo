@@ -5,7 +5,11 @@ var express = require('express'),
   converter = require("./converter");;
 
 app.get('/', function (req, res) {
-  res.status(200).send('You made it to hiiq/nodejs-ci-demo home page...');
+  res.status(200).send('Welcome to hiiq/nodejs-ci-demo home page...');
+});
+
+app.get('/ci-build-servers', function (req, res) {
+  res.status(200).send('CONTINUOUS INTEGRATION BUILD SERVERS: Travis CI, CircleCI and Wercker.');
 });
 
 app.get('/test', function (req, res) {
