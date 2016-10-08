@@ -34,4 +34,4 @@ deploy:
     - s3sync:
       key-id: AKIAIQFF65FE67AGLPUQ
       key-secret: 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
-      bucket-url: http://nodejs-ci-demo.s3-website-us-west-2.amazonaws.com/
+      bucket-url: s3://nodejs-ci-demo
