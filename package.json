@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha",
+    "test": "xo && mocha",
+    "test-style": "standard",
     "cover": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "code-climate": "codeclimate-test-reporter < ./coverage/lcov.info",
@@ -29,7 +30,12 @@
   },
   "homepage": "https://github.com/hiiq/nodejs-ci-demo#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "cool-ascii-faces": "1.3.4",
+    "express": "^4.14.0",
+    "globals": "^9.10.0",
+    "snazzy": "^5.0.0",
+    "standard-reporter": "^1.0.5",
+    "standard-summary": "^1.0.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -41,6 +47,18 @@
     "mocha-lcov-reporter": "^1.2.0",
     "nyc": "^8.3.0",
     "request": "^2.75.0",
-    "supertest": "^1.2.0"
+    "standard": "^8.3.0",
+    "supertest": "^1.2.0",
+    "xo": "^0.16.0"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it"
+    ],
+    "ignore": [
+      "/logs/**",
+      "tmp.js"
+    ]
   }
 }

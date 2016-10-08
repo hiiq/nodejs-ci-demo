@@ -35,6 +35,7 @@ test:
     post:
       - npm run coveralls
       - npm run code-climate
+      - bash <(curl -s https://codecov.io/bash)
 
 ########################
 # Customize deployment
