@@ -19,7 +19,7 @@ build:
     # A step that executes `npm test` command
     - npm-test
     # A step that executes codecov code coverage 
-    - bash <(curl -s https://codecov.io/bash)
+    #- bash <(curl -s https://codecov.io/bash)
 
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
