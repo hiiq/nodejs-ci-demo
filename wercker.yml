@@ -17,7 +17,7 @@ build:
     # A step that executes `npm install` command
     - npm-install
     # A step that executes `npm test` command
-    - npm-test
+    #- npm-test
     # A step that executes codecov code coverage 
     #- bash <(curl -s https://codecov.io/bash)
 
